@@ -2,19 +2,25 @@
 //
 
 #include <iostream>
+#include <random>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::normal_distribution<> dist_x(1.0, 0.5); // Schwerpunkt um x=1
+    for (int j = 0; j < 10; ++j) {
+        double spieler1 = double{ dist_x(gen) };
+        double spieler2 = double{ dist_x(gen) };
+        std::cout << std::endl;
+        if (spieler1 > spieler2) {
+            std::cout << "Spieler 1 hat gewonnen";
+        }
+        else {
+            std::cout << "Spieler 2 hat gewonnen";
+        }
+    }
+    
+    std::cout << "Ende!\n";
 }
 
-// Programm ausführen: STRG+F5 oder Menüeintrag "Debuggen" > "Starten ohne Debuggen starten"
-// Programm debuggen: F5 oder "Debuggen" > Menü "Debuggen starten"
-
-// Tipps für den Einstieg: 
-//   1. Verwenden Sie das Projektmappen-Explorer-Fenster zum Hinzufügen/Verwalten von Dateien.
-//   2. Verwenden Sie das Team Explorer-Fenster zum Herstellen einer Verbindung mit der Quellcodeverwaltung.
-//   3. Verwenden Sie das Ausgabefenster, um die Buildausgabe und andere Nachrichten anzuzeigen.
-//   4. Verwenden Sie das Fenster "Fehlerliste", um Fehler anzuzeigen.
-//   5. Wechseln Sie zu "Projekt" > "Neues Element hinzufügen", um neue Codedateien zu erstellen, bzw. zu "Projekt" > "Vorhandenes Element hinzufügen", um dem Projekt vorhandene Codedateien hinzuzufügen.
-//   6. Um dieses Projekt später erneut zu öffnen, wechseln Sie zu "Datei" > "Öffnen" > "Projekt", und wählen Sie die SLN-Datei aus.
